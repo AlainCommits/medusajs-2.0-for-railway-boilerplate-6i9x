@@ -11,6 +11,9 @@ const plugins = [
 ];
 
 const modules = {
+  stockLocationService: {
+    resolve: "@medusajs/stock-location",
+  },
   [Modules.FILE]: {
     resolve: '@medusajs/file',
     options: {

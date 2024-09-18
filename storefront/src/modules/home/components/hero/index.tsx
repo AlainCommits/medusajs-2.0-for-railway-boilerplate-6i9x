@@ -48,7 +48,7 @@ const Hero = () => {
               <Image
                 src={rb1}
                 width={250}	
-                height={250}
+                height={200}
                
                 alt="linear demo image"
                 className="absolute -right-10 md:-right-[40%] lg:-right-[10%] -bottom-10 object-contain rounded-2xl"
