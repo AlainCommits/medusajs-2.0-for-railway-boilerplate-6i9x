@@ -1,31 +1,34 @@
-import { useFormState } from "react-dom"
-
-import { LOGIN_VIEW } from "@modules/account/templates/login-template"
-import Input from "@modules/common/components/input"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
-import { login } from "@lib/data/customer"
+import { useFormState } from "react-dom";
+import { LOGIN_VIEW } from "@modules/account/templates/login-template";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import ErrorMessage from "@modules/checkout/components/error-message";
+import { SubmitButton } from "@modules/checkout/components/submit-button";
+import { login } from "@lib/data/customer";
 
 type Props = {
-  setCurrentView: (view: LOGIN_VIEW) => void
-}
+  setCurrentView: (view: LOGIN_VIEW) => void;
+};
 
 const Login = ({ setCurrentView }: Props) => {
-  const [message, formAction] = useFormState(login, null)
+  const [message, formAction] = useFormState(login, null);
 
   return (
     <div
-      className="max-w-sm w-full flex flex-col items-center"
+      className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black"
       data-testid="login-page"
     >
-      <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
-      <p className="text-center text-base-regular text-ui-fg-base mb-8">
+      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+        Welcome back
+      </h2>
+      <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
         Sign in to access an enhanced shopping experience.
       </p>
-      <form className="w-full" action={formAction}>
-        <div className="flex flex-col w-full gap-y-2">
+      <form className="my-8 w-full" action={formAction}>
+        <div className="flex flex-col space-y-4">
+          <Label htmlFor="email">Email Address</Label>
           <Input
-            label="Email"
+            id="email"
             name="email"
             type="email"
             title="Enter a valid email address."
@@ -33,8 +36,10 @@ const Login = ({ setCurrentView }: Props) => {
             required
             data-testid="email-input"
           />
+          
+          <Label htmlFor="password">Password</Label>
           <Input
-            label="Password"
+            id="password"
             name="password"
             type="password"
             autoComplete="current-password"
@@ -42,11 +47,14 @@ const Login = ({ setCurrentView }: Props) => {
             data-testid="password-input"
           />
         </div>
+
         <ErrorMessage error={message} data-testid="login-error-message" />
+
         <SubmitButton data-testid="sign-in-button" className="w-full mt-6">
           Sign in
         </SubmitButton>
       </form>
+
       <span className="text-center text-ui-fg-base text-small-regular mt-6">
         Not a member?{" "}
         <button
@@ -56,10 +64,9 @@ const Login = ({ setCurrentView }: Props) => {
         >
           Join us
         </button>
-        .
       </span>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
