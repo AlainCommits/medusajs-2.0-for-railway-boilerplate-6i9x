@@ -11,7 +11,6 @@ const plugins = [
 ];
 
 const modules = {
- 
   [Modules.FILE]: {
     resolve: '@medusajs/file',
     options: {
